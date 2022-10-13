@@ -22,7 +22,6 @@ class ColumnDescriptor
         {s => s.Contains("real"),"double"},
         {s => s == "tinyint","byte"},
         {s => s == "bit","bool"},
-        {s => s == "bit","bool"},
         {s => s == "date","DateTime"},
         {s => s == "datetime","DateTime"},
         {s => s == "datetime2","DateTime"},
@@ -60,15 +59,7 @@ class ColumnDescriptor
 
     private string SystemTypeToClr()
     {
-        try
-        {
-            return this.SqlTypeToClr.First(f => f.Key(this.SystemTypeName)).Value;   
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        return this.SqlTypeToClr.First(f => f.Key(this.SystemTypeName)).Value;   
     }
 
 }
